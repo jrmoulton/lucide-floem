@@ -106,7 +106,7 @@ pub fn lucide(original_svg: String) -> Lucide {
 include!(concat!(env!("OUT_DIR"), "/icons.rs"));
 
 impl Icon {
-    pub fn lucide(&self) -> Lucide {
+    pub fn view(&self) -> Lucide {
         lucide(self.get_svg().to_string())
     }
 }
