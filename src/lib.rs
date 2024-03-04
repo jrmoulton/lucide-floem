@@ -1,6 +1,6 @@
 use floem::{
     id::Id,
-    prop, prop_extracter,
+    prop, prop_extractor,
     taffy::Size,
     view::{default_compute_layout, View, ViewData, Widget},
     views::{svg, Decorators, Svg},
@@ -14,7 +14,7 @@ lazy_static! {
 
 prop!(pub StrokeWidth: f64 {} = 2.);
 
-prop_extracter! {
+prop_extractor! {
     pub LucideProps {
         pub stroke_width: StrokeWidth,
     }
