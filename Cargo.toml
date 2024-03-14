@@ -13,9 +13,9 @@ repository = "https://github.com/jrmoulton/lucide-floem"
 
 [dependencies]
 const_format = { version = "0.2.32", features = ["fmt"] }
-# floem = {path = "../floem/main"}
 lazy_static = "1.4.0"
 
+# floem = {path = "../floem"}
 # floem = {git = "https://github.com/jrmoulton/floem", rev = "ebdc5537c0e8c6f6eeadf1a86124c62b161a8cdc"}
-floem = {git = "https://github.com/lapce/floem", rev = "0f211f07123b021f47422e32e9d9a257e1395726"}
+floem = { git = "https://github.com/lapce/floem", rev = "ee556282ed25a195aa3a3e1d6fdcb405f6f1c466" }
 regex = "1.10.3"
