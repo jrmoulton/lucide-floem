@@ -110,3 +110,34 @@ impl Icon {
         lucide(self.get_svg().to_string())
     }
 }
+
+
+// impl Lucide {
+//     pub fn lucide_style(
+//         mut self,
+//         style: impl Fn(LucideCustomStyle) -> LucideCustomStyle + 'static,
+//     ) -> Self {
+//         let id = self.id();
+//         let offset = Widget::view_data_mut(&mut self).style.next_offset();
+//         let style = create_updater(
+//             move || style(ToggleButtonCustomStyle(Style::new())),
+//             move |style| id.update_style(style.0, offset),
+//         );
+//         Widget::view_data_mut(&mut self).style.push(style.0);
+//         self
+//     }
+// }
+
+// pub struct LucideCustomStyle(Style);
+
+// impl LucideCustomStyle {
+//     pub fn stroke_width(mut self, stroke_width: f64) -> Self {
+//         self = Self(self.0.set(StrokeWidth, stroke_width));
+//         self
+//     }
+//     /// Apply regular style properties
+//     pub fn style(mut self, style: impl Fn(Style) -> Style + 'static) -> Self {
+//         self = Self(self.0.apply(style(Style::new())));
+//         self
+//     }
+// }
