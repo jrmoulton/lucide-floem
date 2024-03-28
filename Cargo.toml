@@ -12,10 +12,10 @@ repository = "https://github.com/jrmoulton/lucide-floem"
 
 
 [dependencies]
-const_format = { version = "0.2.32", features = ["fmt"] }
+const_format = { version = "0.2.32" }
 lazy_static = "1.4.0"
 
 # floem = { path = "../floem" }
-floem = {git = "https://github.com/jrmoulton/floem", rev = "942aaacc48594b44055dab3b44cb50128d7a5d23"}
+floem = {git = "https://github.com/jrmoulton/floem", rev = "27844945f54f76c1e90e6ff9fe2182cc18bbc238"}
 # floem = { git = "https://github.com/lapce/floem", rev = "ee556282ed25a195aa3a3e1d6fdcb405f6f1c466" }
 regex = "1.10.3"
