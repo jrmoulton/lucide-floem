@@ -25,8 +25,22 @@ fn main() -> io::Result<()> {
     }
 
     // Then, declare the Icon enum
-    writeln!(f, "\n#[derive(Clone, Copy, Debug)]")?;
-    writeln!(f, "\npub enum Icon {{")?;
+    writeln!(f, "\n/// `Icon` represents the available icons.")?; // Short description about the enum
+    writeln!(f, "///")?; // Empty doc line
+    writeln!(f, "/// # Examples")?; // Section for examples
+    writeln!(f, "///")?; // Empty doc line
+    writeln!(f, "/// Basic usage:")?; // Example description
+    writeln!(f, "///")?; // Empty doc line
+    writeln!(f, "/// ```")?; // Start of the Rust code block
+    writeln!(f, "/// lucide_floem::Icon::ChevronDown")?; // Example code line
+    writeln!(f, "///    .style(|s| s.size(50, 50));")?; // Example code line
+    writeln!(f, "/// ```")?; // End of the Rust code block
+    writeln!(f, "///")?; // Empty doc line
+    writeln!(f, "///")?; // Empty doc line if you plan to add more text after the example
+    writeln!(f, "///")?; // ...you might add more advanced examples or explanations here
+    writeln!(f, "///")?; // Empty doc line before the enum definition itself provides visual separation
+    writeln!(f, "#[derive(Clone, Copy, Debug)]")?;
+    writeln!(f, "pub enum Icon {{")?;
     for entry in fs::read_dir(icons_dir)? {
         let entry = entry?;
         let path = entry.path();
@@ -52,6 +66,27 @@ fn main() -> io::Result<()> {
             let const_name = to_screaming_snake_case(name);
 
             writeln!(f, "            Icon::{} => {},", enum_name, const_name)?;
+        }
+    }
+    writeln!(f, "        }}")?;
+    writeln!(f, "    }}")?;
+    writeln!(f, "}}")?;
+
+    // Generate the get_debug_name function
+    writeln!(f, "\nimpl Icon {{")?;
+    writeln!(
+        f,
+        "    pub const fn get_debug_name(&self) -> &'static str {{"
+    )?;
+    writeln!(f, "        match self {{")?;
+    for entry in fs::read_dir(icons_dir)? {
+        let entry = entry?;
+        let path = entry.path();
+        if path.extension().and_then(|s| s.to_str()) == Some("svg") {
+            let name = path.file_stem().unwrap().to_str().unwrap();
+            let enum_name = to_camel_case(name);
+
+            writeln!(f, "            Icon::{} => \"{}\",", enum_name, enum_name)?;
         }
     }
     writeln!(f, "        }}")?;

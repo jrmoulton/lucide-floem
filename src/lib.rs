@@ -1,7 +1,15 @@
+//! Lucide Floem
+//!
+//! Example
+//! ```rust
+//! lucide_floem::Icon::ChevronDown
+//!    .style(|s| s.size(50, 50))
+//!
+
 use floem::{
     prop, prop_extractor,
     views::{svg, Decorators},
-    View, ViewId,
+    IntoView, View, ViewId,
 };
 use lazy_static::lazy_static;
 use regex::Regex;
@@ -39,8 +47,16 @@ impl View for Lucide {
         }
         cx.style_view(self.svg_id);
     }
+
+    fn debug_name(&self) -> std::borrow::Cow<'static, str> {
+        std::borrow::Cow::Borrowed("Lucide")
+    }
 }
 
+/// You should be using the `Icon` enum to create icons instead of using this function directly.
+///
+/// This function is used to create a Lucide view from an SVG string.
+/// The string must be a lucide SVG.
 pub fn lucide(original_svg: String) -> Lucide {
     let cloned = original_svg.clone();
     let child = svg(move || cloned.clone()).style(|s| s.size_full());
@@ -60,7 +76,15 @@ pub fn lucide(original_svg: String) -> Lucide {
 include!(concat!(env!("OUT_DIR"), "/icons.rs"));
 
 impl Icon {
-    pub fn view(&self) -> Lucide {
-        lucide(self.get_svg().to_string())
+    fn view(&self) -> Lucide {
+        lucide(self.get_svg().to_string()).debug_name(self.get_debug_name())
+    }
+}
+
+impl IntoView for Icon {
+    type V = Lucide;
+
+    fn into_view(self) -> Self::V {
+        self.view()
     }
 }
