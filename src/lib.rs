@@ -8,6 +8,8 @@
 
 use floem::{
     prop, prop_extractor,
+    style::{FontSize, Style},
+    style_class,
     views::{svg, Decorators},
     IntoView, View, ViewId,
 };
@@ -18,11 +20,14 @@ lazy_static! {
     static ref RE: Regex = Regex::new(r#"stroke-width="(\d+)""#).unwrap();
 }
 
+style_class!(pub LucideClass);
+
 prop!(pub StrokeWidth: f64 {} = 2.);
 
 prop_extractor! {
     pub LucideProps {
         pub stroke_width: StrokeWidth,
+        pub font_size: FontSize,
     }
 }
 
@@ -30,14 +35,18 @@ pub struct Lucide {
     id: ViewId,
     lucide_props: LucideProps,
     svg_id: ViewId,
+    size: Option<f32>,
     original_svg: String,
 }
 impl View for Lucide {
     fn id(&self) -> floem::ViewId {
         self.id
     }
-    fn style(&mut self, cx: &mut floem::context::StyleCx<'_>) {
+
+    fn style_pass(&mut self, cx: &mut floem::context::StyleCx<'_>) {
         if self.lucide_props.read(cx) {
+            self.id().request_all();
+            self.size = self.lucide_props.font_size();
             let replaced = RE.replace_all(
                 &self.original_svg,
                 format!(r#"stroke-width="{}""#, self.lucide_props.stroke_width()).as_str(),
@@ -48,8 +57,23 @@ impl View for Lucide {
         cx.style_view(self.svg_id);
     }
 
+    fn layout(&mut self, cx: &mut floem::context::LayoutCx) -> floem::taffy::prelude::NodeId {
+        let ni = floem::recursively_layout_view(self.id, cx);
+        if let Some(size) = self.size {
+            let style = self.id.get_combined_style();
+            let node = self.id.taffy_node();
+            let style = Style::new().size(size, size).apply(style).to_taffy_style();
+            self.id.set_taffy_style(node, style);
+        }
+        ni
+    }
+
     fn debug_name(&self) -> std::borrow::Cow<'static, str> {
         std::borrow::Cow::Borrowed("Lucide")
+    }
+
+    fn paint(&mut self, cx: &mut floem::context::PaintCx) {
+        cx.paint_children(self.id);
     }
 }
 
@@ -68,9 +92,11 @@ pub fn lucide(original_svg: String) -> Lucide {
         id,
         lucide_props: Default::default(),
         svg_id,
+        size: None,
         original_svg,
     }
-    .style(|s| s.items_center().justify_center())
+    .class(LucideClass)
+    .style(|s| s.items_center().justify_center().min_size(1., 1.))
 }
 
 include!(concat!(env!("OUT_DIR"), "/icons.rs"));

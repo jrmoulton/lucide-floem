@@ -16,7 +16,7 @@ const_format = { version = "0.2.32" }
 lazy_static = "1.4.0"
 
 # floem = { path = "../floem" }
-floem = { git = "https://github.com/lapce/floem" }
-# floem = { git = "https://github.com/jrmoulton/floem", rev = "27844945f54f76c1e90e6ff9fe2182cc18bbc238" }
+# floem = { git = "https://github.com/lapce/floem" }
+floem = { git = "https://github.com/jrmoulton/floem" }
 # floem = { git = "https://github.com/lapce/floem", rev = "04ee9e7c7786f1ab309b35287ec4a63574cbe9ae" }
 regex = "1.10.3"

@@ -771,7 +771,7 @@ checksum = "98de4bbd547a563b716d8dfa9aad1cb19bfab00f4fa09a6a4ed21dbcf44ce9c4"
 [[package]]
 name = "floem"
 version = "0.1.1"
-source = "git+https://github.com/lapce/floem#7e5dd278fc850767729ccc61c24c5c57715d5b93"
+source = "git+https://github.com/jrmoulton/floem#3f17f36b6a8642502d2f799b42731710cdbcd4d3"
 dependencies = [
  "bitflags 2.5.0",
  "copypasta",
@@ -788,7 +788,6 @@ dependencies = [
  "im-rc",
  "image",
  "indexmap",
- "kurbo 0.11.0",
  "lapce-xi-rope",
  "once_cell",
  "parking_lot",
@@ -833,7 +832,7 @@ dependencies = [
 [[package]]
 name = "floem-editor-core"
 version = "0.1.1"
-source = "git+https://github.com/lapce/floem#7e5dd278fc850767729ccc61c24c5c57715d5b93"
+source = "git+https://github.com/jrmoulton/floem#3f17f36b6a8642502d2f799b42731710cdbcd4d3"
 dependencies = [
  "bitflags 2.5.0",
  "itertools",
@@ -909,7 +908,7 @@ dependencies = [
 [[package]]
 name = "floem_reactive"
 version = "0.1.1"
-source = "git+https://github.com/lapce/floem#7e5dd278fc850767729ccc61c24c5c57715d5b93"
+source = "git+https://github.com/jrmoulton/floem#3f17f36b6a8642502d2f799b42731710cdbcd4d3"
 dependencies = [
  "smallvec",
 ]
@@ -917,7 +916,7 @@ dependencies = [
 [[package]]
 name = "floem_renderer"
 version = "0.1.1"
-source = "git+https://github.com/lapce/floem#7e5dd278fc850767729ccc61c24c5c57715d5b93"
+source = "git+https://github.com/jrmoulton/floem#3f17f36b6a8642502d2f799b42731710cdbcd4d3"
 dependencies = [
  "floem-cosmic-text",
  "image",
@@ -928,7 +927,7 @@ dependencies = [
 [[package]]
 name = "floem_tiny_skia_renderer"
 version = "0.1.1"
-source = "git+https://github.com/lapce/floem#7e5dd278fc850767729ccc61c24c5c57715d5b93"
+source = "git+https://github.com/jrmoulton/floem#3f17f36b6a8642502d2f799b42731710cdbcd4d3"
 dependencies = [
  "anyhow",
  "bytemuck",
@@ -945,7 +944,7 @@ dependencies = [
 [[package]]
 name = "floem_vger_renderer"
 version = "0.1.1"
-source = "git+https://github.com/lapce/floem#7e5dd278fc850767729ccc61c24c5c57715d5b93"
+source = "git+https://github.com/jrmoulton/floem#3f17f36b6a8642502d2f799b42731710cdbcd4d3"
 dependencies = [
  "anyhow",
  "floem-vger",
@@ -1858,11 +1857,13 @@ checksum = "57c0d7b74b563b49d38dae00a0c37d4d6de9b432382b2892f0574ddcae73fd0a"
 
 [[package]]
 name = "peniko"
-version = "0.1.0"
+version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "caaf7fec601d640555d9a4cab7343eba1e1c7a5a71c9993ff63b4c26bc5d50c5"
+checksum = "3c28d7294093837856bb80ad191cc46a2fcec8a30b43b7a3b0285325f0a917a9"
 dependencies = [
  "kurbo 0.11.0",
+ "serde",
+ "serde_bytes",
  "smallvec",
 ]
 
@@ -2263,18 +2264,27 @@ checksum = "1c107b6f4780854c8b126e228ea8869f4d7b71260f962fefb57b996b8959ba6b"
 
 [[package]]
 name = "serde"
-version = "1.0.202"
+version = "1.0.203"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "226b61a0d411b2ba5ff6d7f73a476ac4f8bb900373459cd00fab8512828ba395"
+checksum = "7253ab4de971e72fb7be983802300c30b5a7f0c2e56fab8abfc6a214307c0094"
 dependencies = [
  "serde_derive",
 ]
 
 [[package]]
-name = "serde_derive"
-version = "1.0.202"
+name = "serde_bytes"
+version = "0.11.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6048858004bcff69094cd972ed40a32500f153bd3be9f716b2eed2e8217c4838"
+checksum = "8b8497c313fd43ab992087548117643f6fcd935cbf36f176ffda0aacf9591734"
+dependencies = [
+ "serde",
+]
+
+[[package]]
+name = "serde_derive"
+version = "1.0.203"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "500cbc0ebeb6f46627f50f3f5811ccf6bf00643be300b4c3eabc0ef55dc5b5ba"
 dependencies = [
  "proc-macro2",
  "quote",
