@@ -15,8 +15,13 @@ repository = "https://github.com/jrmoulton/lucide-floem"
 const_format = { version = "0.2.32" }
 lazy_static = "1.4.0"
 
+floem-lapce = { package = "floem", git = "https://github.com/lapce/floem", optional = true }
+floem-jrmoulton = { package = "floem", git = "https://github.com/jrmoulton/floem", optional = true }
 # floem = { path = "../floem" }
-# floem = { git = "https://github.com/lapce/floem" }
-floem = { git = "https://github.com/jrmoulton/floem" }
 # floem = { git = "https://github.com/lapce/floem", rev = "04ee9e7c7786f1ab309b35287ec4a63574cbe9ae" }
 regex = "1.10.3"
+
+[features]
+default = ["use-lapce"]
+use-lapce = ["floem-lapce"]
+use-jrmoulton = ["floem-jrmoulton"]

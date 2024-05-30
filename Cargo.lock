@@ -778,12 +778,48 @@ dependencies = [
  "crossbeam-channel",
  "downcast-rs",
  "educe",
- "floem-editor-core",
+ "floem-editor-core 0.1.1 (git+https://github.com/jrmoulton/floem)",
  "floem-winit",
- "floem_reactive",
- "floem_renderer",
- "floem_tiny_skia_renderer",
- "floem_vger_renderer",
+ "floem_reactive 0.1.1 (git+https://github.com/jrmoulton/floem)",
+ "floem_renderer 0.1.1 (git+https://github.com/jrmoulton/floem)",
+ "floem_tiny_skia_renderer 0.1.1 (git+https://github.com/jrmoulton/floem)",
+ "floem_vger_renderer 0.1.1 (git+https://github.com/jrmoulton/floem)",
+ "im",
+ "im-rc",
+ "image",
+ "indexmap",
+ "lapce-xi-rope",
+ "once_cell",
+ "parking_lot",
+ "peniko",
+ "raw-window-handle 0.6.1",
+ "rustc-hash",
+ "sha2",
+ "slotmap",
+ "smallvec",
+ "strum",
+ "strum_macros",
+ "taffy",
+ "unicode-segmentation",
+ "wgpu",
+]
+
+[[package]]
+name = "floem"
+version = "0.1.1"
+source = "git+https://github.com/lapce/floem#1674b0476c4a857322877f765bc8489c0d61d01b"
+dependencies = [
+ "bitflags 2.5.0",
+ "copypasta",
+ "crossbeam-channel",
+ "downcast-rs",
+ "educe",
+ "floem-editor-core 0.1.1 (git+https://github.com/lapce/floem)",
+ "floem-winit",
+ "floem_reactive 0.1.1 (git+https://github.com/lapce/floem)",
+ "floem_renderer 0.1.1 (git+https://github.com/lapce/floem)",
+ "floem_tiny_skia_renderer 0.1.1 (git+https://github.com/lapce/floem)",
+ "floem_vger_renderer 0.1.1 (git+https://github.com/lapce/floem)",
  "im",
  "im-rc",
  "image",
@@ -833,6 +869,20 @@ dependencies = [
 name = "floem-editor-core"
 version = "0.1.1"
 source = "git+https://github.com/jrmoulton/floem#3f17f36b6a8642502d2f799b42731710cdbcd4d3"
+dependencies = [
+ "bitflags 2.5.0",
+ "itertools",
+ "lapce-xi-rope",
+ "memchr",
+ "once_cell",
+ "strum",
+ "strum_macros",
+]
+
+[[package]]
+name = "floem-editor-core"
+version = "0.1.1"
+source = "git+https://github.com/lapce/floem#1674b0476c4a857322877f765bc8489c0d61d01b"
 dependencies = [
  "bitflags 2.5.0",
  "itertools",
@@ -914,9 +964,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "floem_reactive"
+version = "0.1.1"
+source = "git+https://github.com/lapce/floem#1674b0476c4a857322877f765bc8489c0d61d01b"
+dependencies = [
+ "smallvec",
+]
+
+[[package]]
 name = "floem_renderer"
 version = "0.1.1"
 source = "git+https://github.com/jrmoulton/floem#3f17f36b6a8642502d2f799b42731710cdbcd4d3"
+dependencies = [
+ "floem-cosmic-text",
+ "image",
+ "peniko",
+ "resvg",
+]
+
+[[package]]
+name = "floem_renderer"
+version = "0.1.1"
+source = "git+https://github.com/lapce/floem#1674b0476c4a857322877f765bc8489c0d61d01b"
 dependencies = [
  "floem-cosmic-text",
  "image",
@@ -931,7 +1000,24 @@ source = "git+https://github.com/jrmoulton/floem#3f17f36b6a8642502d2f799b4273171
 dependencies = [
  "anyhow",
  "bytemuck",
- "floem_renderer",
+ "floem_renderer 0.1.1 (git+https://github.com/jrmoulton/floem)",
+ "futures",
+ "image",
+ "peniko",
+ "raw-window-handle 0.6.1",
+ "resvg",
+ "softbuffer",
+ "swash",
+]
+
+[[package]]
+name = "floem_tiny_skia_renderer"
+version = "0.1.1"
+source = "git+https://github.com/lapce/floem#1674b0476c4a857322877f765bc8489c0d61d01b"
+dependencies = [
+ "anyhow",
+ "bytemuck",
+ "floem_renderer 0.1.1 (git+https://github.com/lapce/floem)",
  "futures",
  "image",
  "peniko",
@@ -948,7 +1034,24 @@ source = "git+https://github.com/jrmoulton/floem#3f17f36b6a8642502d2f799b4273171
 dependencies = [
  "anyhow",
  "floem-vger",
- "floem_renderer",
+ "floem_renderer 0.1.1 (git+https://github.com/jrmoulton/floem)",
+ "futures",
+ "image",
+ "peniko",
+ "raw-window-handle 0.6.1",
+ "resvg",
+ "swash",
+ "wgpu",
+]
+
+[[package]]
+name = "floem_vger_renderer"
+version = "0.1.1"
+source = "git+https://github.com/lapce/floem#1674b0476c4a857322877f765bc8489c0d61d01b"
+dependencies = [
+ "anyhow",
+ "floem-vger",
+ "floem_renderer 0.1.1 (git+https://github.com/lapce/floem)",
  "futures",
  "image",
  "peniko",
@@ -1575,7 +1678,8 @@ name = "lucide-floem"
 version = "0.1.0"
 dependencies = [
  "const_format",
- "floem",
+ "floem 0.1.1 (git+https://github.com/jrmoulton/floem)",
+ "floem 0.1.1 (git+https://github.com/lapce/floem)",
  "lazy_static",
  "regex",
 ]

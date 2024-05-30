@@ -6,6 +6,11 @@
 //!    .style(|s| s.size(50, 50))
 //!
 
+#[cfg(feature = "use-jrmoulton")]
+use floem_jrmoulton as floem;
+#[cfg(feature = "use-lapce")]
+use floem_lapce as floem;
+
 use floem::{
     prop, prop_extractor,
     style::{FontSize, Style},
