@@ -6,11 +6,6 @@
 //!    .style(|s| s.size(50, 50))
 //!
 
-#[cfg(feature = "use-jrmoulton")]
-use floem_jrmoulton as floem;
-#[cfg(feature = "use-lapce")]
-use floem_lapce as floem;
-
 use floem::{
     prop, prop_extractor,
     style::{FontSize, Style},
@@ -88,7 +83,7 @@ impl View for Lucide {
 /// The string must be a lucide SVG.
 pub fn lucide(original_svg: String) -> Lucide {
     let cloned = original_svg.clone();
-    let child = svg(move || cloned.clone()).style(|s| s.size_full());
+    let child = svg(cloned.clone()).style(|s| s.size_full());
     let svg_id = child.id();
     let id = ViewId::new();
     id.set_children(vec![child]);

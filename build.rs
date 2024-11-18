@@ -8,7 +8,7 @@ fn main() -> io::Result<()> {
     let dest_path = Path::new(&out_dir).join("icons.rs");
     let mut f = File::create(dest_path)?;
 
-    let icons_dir = Path::new("icons");
+    let icons_dir = Path::new("lucide/icons");
 
     // First, generate the constants for each SVG file
     for entry in fs::read_dir(icons_dir)? {
